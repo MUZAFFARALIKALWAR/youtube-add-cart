@@ -21,20 +21,22 @@ function Cartpage() {
                     <div className="flex flex-col ml-3">
                         <span>Size:{items.size[0]}</span>
                         <span>Color:{items.color[0]}</span>
-                        <span>${items.price}</span>
+                        {/* <span>${items.price}</span> */}
+                        <p className="font-bold" key={i}>${items.discount > 0 ? (items.price - 
+                       (items.price * items.discount) / 100) * items.qty : items.price * items.qty}</p>
                     </div>
                     </div>
                     <div className="relative">
                          {/* btn */}
-                      <span><AiFillDelete onClick={()=>dispatch(delItem(items.uuid))} className="text-red-500 cursor-pointer absolute right-2 top-0"/></span>
+                      <button  onClick={()=>dispatch(delItem(items.uuid))}><AiFillDelete className="text-red-500 cursor-pointer absolute right-2 top-0"/></button>
                      {/* INcreament decreament */}
                      <div className='flex justify-start items-center pt-10 '>
                      <button 
-                     onClick={()=>dispatch(addition(items.uuid))}
+                     onClick={()=>dispatch(subraction(items))}
                      className='w-10'><Minus/></button>
                      <span className='w-4'>{items.qty}</span>
                      <button
-                       onClick={()=>dispatch(subraction(items.uuid))}
+                       onClick={()=>dispatch(addition(items))}
                      className='w-10'><Plus/></button>
                      </div>
                     </div>

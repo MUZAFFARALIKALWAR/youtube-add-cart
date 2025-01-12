@@ -7,6 +7,7 @@ import React, { useState } from 'react'
 import { FaStar } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { addtocart } from '../../Redux/features/cartSlice';
+import Toastity from '@/components/addtocarttosity';
 let stars = [<FaStar key={0}/>,<FaStar key={1}/>,<FaStar key={2}/>,<FaStar key={3}/>,<FaStar key={4}/>]
 
 function SlugPage({ params}: {params:{slug:string}} ) {
@@ -85,7 +86,8 @@ function SlugPage({ params}: {params:{slug:string}} ) {
              <span className='w-4'>{cartItem.qty}</span>
              <button onClick={(()=>setcartItem({...cartItem,qty:++cartItem.qty}))} className='w-10'><Plus/></button>
               {/* add to cart */}
-              <Button onClick={()=>dispatch(addtocart(cartItem))} className='lg:w-[300px]'>Add to cart</Button>
+              {/* <Button onClick={()=>dispatch(addtocart(cartItem))} className='lg:w-[300px]'>Add to cart</Button> */}
+              <Toastity cartItem={cartItem}/>
               </div>
              
          </div>
